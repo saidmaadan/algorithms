@@ -28,10 +28,12 @@ end
   end
 
  def self.sum_arrays(array1, array2)
-    total_sum = []
-    array1.each_index do |arr|
-    total_sum << array1[arr] + array2[arr]
-    end
-    total_sum
+  x=0
+  total_array = []
+  until x == array1.length
+    total_array << array1[x] + array2[x]
+    x += 1
+  end
+  total_array
   end
 end
