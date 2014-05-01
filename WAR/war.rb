@@ -14,18 +14,25 @@ end
 class Deck
   attr_accessor :deck
   def initialize
-    @deck = nil # Determine the best way to hold the cards
+    @deck = [] # Determine the best way to hold the cards
   end
 
   # Given a card, insert it on the bottom your deck
   def add_card(card)
-
+    @deck << card
   end
+
+
 
   # Mix around the order of the cards in your deck
   def shuffle # You can't use .shuffle!
 
   end
+
+  def <=>(other)
+    other.score <=> score
+  end
+
 
   # Remove the top card from your deck and return it
   def deal_card
@@ -57,10 +64,22 @@ class War
   end
 
   # You will need to play the entire game in this method using the WarAPI
-  def play_game
+  def play_game(rounds)
     # WarAPI.play_turn()
+    @deck.each do |player, card|
+      puts "#{player}: #{card}"
+    end
+
+    1.upto(rounds) do |round|
+      puts "\nRound #{round}:"
+      @deck.each do |player, card|
+        WarAPI.play_turn(player, card)
+        puts "#{player}: #{card}"
+      end
+    end
   end
-end
+
+
 
 
 class WarAPI
