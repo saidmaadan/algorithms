@@ -41,6 +41,12 @@ class Deck
 
   # Reset this deck with 52 cards
   def create_52_card_deck
+    value = (2..14).to_a
+    ["Spades", "Hearts", "Diamonds", "Clubs"].each
+    ((2..10).to_a + ["J", "K", "L", "A"]).each_with_index do |rank|
+      @deck << Card.new(rank,value[index],suit)
+    end
+  end
 
   end
 
