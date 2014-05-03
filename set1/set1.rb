@@ -28,19 +28,18 @@ module Set1
 
     # for i in 0..array.length == (0..array.length).each do |i|
 
-
-  def self.find_sum_3(array, sum = 0)
-    return false if array.length == 0
-    (0..array.length).each do |i|
-      return true if array[i] == 0
-      for j in (i + 1)...array.length
-      return true if array[j] == 0
-      for k in (j + i + 1)...array.length
-        return true if array[i] + array[j] + array[k] == sum
+  def self.find_sum_3(array)
+    return false if array == []
+    return true if array.include?(0)
+    return false if array == []
+    array.each do |a|
+      array.each do |b|
+          array.each do |c|
+            return true if a + b + c == 0
+          end
       end
     end
+    return false
   end
-    false
-  end
-end
+ end
 
