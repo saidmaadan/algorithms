@@ -13,39 +13,104 @@ module Sort
     return array
   end
 
-  def self.merge_sort(array)
-    if array.size <= 1
-      return array
-    end
+
+ # You can break down an array into smallest array
+
+ def self.merge_sort(array)
+    return array if array.size <= 1
       mid = array.length / 2
       array1 = array[0...mid]
       array2 = array[mid..array.length - 1]
+      left_half = Sort.merge_sort(array1)
+      right_half = Sort.merge_sort(array2)
 
-      x = Sort.merge_sort(array1)
-      y = Sort.merge_sort(array2)
-
-      return Sort.merge(x, y)
-  end
+      return Sort.merge(left_half, right_half)
+   end
 
   def self.merge(array1, array2)
     merged = []
-    x = 0
-    y = 0
-    while array1.length > x  || array2.length > y
-      if array1.length == x
-        merged = merged + array2[y..-1]
+    left = 0
+    right = 0
+    while array1.length > left  || array2.length > right
+      if array1.length == left
+        merged = merged + array2[right..-1]
         break
-      elsif array2.length == y
-        merged = merged + array1[x..-1]
+      elsif array2.length == right
+        merged = merged + array1[left..-1]
         break
-      elsif array1[x] >= array2[y]
-        merged.push(array2[y])
-        y += 1
-      elsif array1[x] < array2[y]
-        merged.push(array1[x])
-        x += 1
+      elsif array1[left] >= array2[right]
+        merged.push(array2[right])
+        right += 1
+      elsif array1[left] < array2[right]
+        merged.push(array1[left])
+        left += 1
     end
     end
     return merged
     end
-end
+ end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
